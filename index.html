@@ -1071,7 +1071,10 @@
 
 <script>
 function toggleDay(header) {
-  header.closest('.day-card').classList.toggle('open');
+  const card = header.closest('.day-card');
+  const wasOpen = card.classList.contains('open');
+  document.querySelectorAll('.day-card.open').forEach(c => c.classList.remove('open'));
+  if (!wasOpen) card.classList.add('open');
 }
 
 document.querySelectorAll('.filter-btn').forEach(btn => {
